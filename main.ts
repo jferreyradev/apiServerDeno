@@ -25,11 +25,11 @@ app.get("/", (c) => {
 });
 
 app.post("/items", async (c) => {
-  const { id, text} = await c.req.json();
-  const Item: Item = { id, text};
+  const { id, value} = await c.req.json();
+  const Item: Item = { id, value};
   setItem(`Items_${id}`, Item);
   return c.json({
-    message: `We just added a ${text} Item!`,
+    message: `We just added a ${value} Item!`,
   });
 });
 
@@ -44,11 +44,11 @@ app.get("/items/:id", async (c) => {
 
 app.put("/items/:id", async (c) => {
   const id = c.req.param("id");
-  const { text } = await c.req.json();
-  const updatedItem: Item = { id, text };
+  const { value } = await c.req.json();
+  const updatedItem: Item = { id, value };
   setItem(`Items_${id}`, updatedItem);
   return c.json({
-    message: `Item has relocated to ${text}!`,
+    message: `Item has relocated to ${value}!`,
   });
 });
 
